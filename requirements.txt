@@ -1,0 +1,9 @@
+# Core Libraries
+numpy
+pandas
+matplotlib
+yfinance
+
+# Machine Learning
+scikit-Learn
+
