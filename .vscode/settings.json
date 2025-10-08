@@ -1,0 +1,17 @@
+{
+    "python.defaultInterpreterPath": "./.venv/bin/python",
+    "python.terminal.activateEnvironment": true,
+    "jupyter.kernels.filter": [],
+    "jupyter.interactiveWindow.creationMode": "perFile",
+    "jupyter.kernels.trusted": [
+        ".venv/bin/python"
+    ],
+    "notebook.defaultKernel": "statistical-arbitrage",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "jupyter.askForKernelRestart": false,
+    "jupyter.debugJustMyCode": false,
+    "files.associations": {
+        "*.ipynb": "jupyter-notebook"
+    }
+}

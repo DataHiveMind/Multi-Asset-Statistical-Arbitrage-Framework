@@ -71,10 +71,12 @@ def technical_indicators(df: pd.DataFrame, long: int, short: int) -> pd.DataFram
     Returns:
         pd.DataFrame: A DataFrame containing the original data along with the computed indicators.
     """
-    df['SMA_{long}'] = df['Close'].rolling(window=long).mean()
-    df['SMA_{short}'] = df['Close'].rolling(window=short).mean()
+    df[f'SMA_{long}'] = df['Close'].rolling(window=long).mean()
+    df[f'SMA_{short}'] = df['Close'].rolling(window=short).mean()
     df['Signal'] = 0
-    df['Signal'][short:] = np.where(df['SMA_{short}'][short:] > df['SMA_{long}'][short:], 1, 0)
+    # Use boolean indexing instead of slice assignment
+    mask = df[f'SMA_{short}'] > df[f'SMA_{long}']
+    df.loc[mask, 'Signal'] = 1
     df['Position'] = df['Signal'].diff()
     return df
 
