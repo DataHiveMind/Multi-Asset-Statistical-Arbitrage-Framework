@@ -31,7 +31,11 @@ def download_raw_data(ticker: str, start_date: str, end_date: str)-> pd.DataFram
         pd.DataFrame: A DataFrame containing the raw historical data.
     """
     df = yf.download(ticker, start=start_date, end=end_date)
-    return df
+    if df is not None and not df.empty:
+        print(f"Downloaded {len(df)} rows of data for {ticker} from {start_date} to {end_date}.")
+        return df
+    else:
+        raise ValueError("No data found for the given ticker and date range.")
 
 def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -73,6 +77,10 @@ def technical_indicators(df: pd.DataFrame, long: int, short: int) -> pd.DataFram
     df['Signal'][short:] = np.where(df['SMA_{short}'][short:] > df['SMA_{long}'][short:], 1, 0)
     df['Position'] = df['Signal'].diff()
     return df
+
+def save_data(df : pd.DataFrame, filename : str)-> None:
+    """ Saves Data into folders"""
+    df.to_csv(filename, index=True)
 
 def connect_kdb() -> None:
     """

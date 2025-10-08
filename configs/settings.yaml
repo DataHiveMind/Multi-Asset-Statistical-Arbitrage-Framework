@@ -2,20 +2,18 @@
 data:
   source: "yfinance"
   tickers: ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NFLX", "META", "IBM"]
-  start_date: "2018-01-01"
+  start_date: "2020-01-01"
   end_date: "2023-01-01"
   frequency: "1d"
   moving_average_windows: [25, 50, 75, 100, 125, 150, 175, 200]
-  technical_indicators: ["SMA", "EMA", "RSI"]
+  technical_indicators: ["SMA", "EMA", "RSI", "MACD", "BollingerBands", "ATR", "ADX"]
 
 paths:
   raw_data_paths: "data/raw/"
   processed_data_paths: "data/processed/"
   notebooks: "notebooks/"
-  scripts: "scripts/"
   tests: "tests/"
-  logs: "logs/"
-  models: "models/"
+ 
 
 backtest:
   start_date: "2020-01-01"
